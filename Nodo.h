@@ -10,12 +10,20 @@
 
 class Nodo {
 public:
+
     int dato;
     Nodo *next;
 
+    int getDato() const;
+    void setDato(int dato);
+
+    Nodo *getNext() const;
+    void setNext(Nodo *next);
+
     void *operator new(size_t);
 
-    void operator delete(void *memoria);
+    void operator delete(void *ptrNodo);
+
 };
 
 

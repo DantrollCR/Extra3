@@ -19,7 +19,7 @@ public:
 
     bool checkFree();
 
-    void setNewAddress(int *add);
+    void setNewAddress(Nodo *add);
 
     int *getFreeAddress();
 };

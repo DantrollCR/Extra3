@@ -11,7 +11,14 @@ void GarbageCollector::setNewAddress(int *add) {
 }
 
 bool GarbageCollector::checkFree() {
-    return true;
+
+
+    if (lista->getHeadGC() == NULL){
+
+        return true;
+    }
+
+
 }
 
 bool GarbageCollector::checkFree1() {

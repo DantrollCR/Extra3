@@ -30,6 +30,23 @@ void Lista::addEnd(int valor) {
 
 }
 
+void Lista::addFirst(int valor){
+
+    Nodo *temp = new Nodo;
+    temp->dato = valor;
+    temp->next = NULL;
+
+    if (cabeza == NULL){
+        cabeza = temp;
+
+    }else{
+
+         temp->next = cabeza;
+         cabeza = temp;
+
+    }
+}
+
 void Lista::vernodos() {
     Nodo *temp = new Nodo;
     temp = cabeza;
@@ -53,4 +70,60 @@ void Lista::addCollectorEnd(int *address) {
         tailGC->next = NULL;
         temp = NULL;
     }
+
+}
+
+void Lista::deleteCollectorFirst(){
+
+
+    if (headGC == NULL){ //es una comprobacion
+
+        std::cout << "No hay espacios de memoria reutilizables disponibles" << std::endl;
+
+    }else{ //esto es lo que deberia hacer el código como tal
+
+        NodoGC *temp = new NodoGC;
+
+        temp = headGC;
+        headGC = headGC->next;
+
+        //aqui es donde no se si se borra el nodeGC de la lista totalmente
+        temp->next = NULL;
+        temp->adress = NULL;
+
+
+
+    }
+}
+
+Nodo *Lista::getCabeza() const {
+    return cabeza;
+}
+
+void Lista::setCabeza(Nodo *cabeza) {
+    Lista::cabeza = cabeza;
+}
+
+Nodo *Lista::getCola() const {
+    return cola;
+}
+
+void Lista::setCola(Nodo *cola) {
+    Lista::cola = cola;
+}
+
+NodoGC *Lista::getHeadGC() const {
+    return headGC;
+}
+
+void Lista::setHeadGC(NodoGC *headGC) {
+    Lista::headGC = headGC;
+}
+
+NodoGC *Lista::getTailGC() const {
+    return tailGC;
+}
+
+void Lista::setTailGC(NodoGC *tailGC) {
+    Lista::tailGC = tailGC;
 }
