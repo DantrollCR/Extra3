@@ -16,21 +16,13 @@ private:
 
 public:
 
-    Nodo *gethead() const;
 
-    void sethead(Nodo *head);
-
-    Nodo *gettail() const;
-
-    void settail(Nodo *tail);
-
-    NodoGC *getHeadGC() const;
+    NodoGC *getHeadGC();
     void setHeadGC(NodoGC *headGC);
 
     NodoGC *getTailGC() const;
     void setTailGC(NodoGC *tailGC);
 
-public:
     Lista(); //constructor
 
     void delete_last();
@@ -45,14 +37,14 @@ public:
 
     void vernodos();
 
-    void vernodosGC();
+    //void vernodosGC();
 
 
     void addFirst(int valor);
 
     void deleteCollectorFirst();
-
-    void deleteCollectorEnd();
+//
+//    void deleteCollectorEnd();
 
 };
 

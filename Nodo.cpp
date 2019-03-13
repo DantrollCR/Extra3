@@ -11,20 +11,19 @@ GarbageCollector gc;
 void *Nodo::operator new(size_t) {
     //aqui se busca si hay un espacio libre en memoria de la lista del GC
     //si no se crea el nodo en uno nuevo
-
     if (gc.checkFree() == true) {
         void *nodo = ::new Nodo();
         return nodo;
     } else {
-        int *addFree = gc.getFreeAddress();
-
-        printf("Memoria Reciclable: %p ", addFree);
-
-        std::cout << "  " << std::endl;
-        Nodo *node = reinterpret_cast<Nodo *>(addFree);
+        std::cout << "Había memoria libre y se la di." << std::endl;
+        int *dir = gc.getFreeAddress();
+        Nodo *node = reinterpret_cast<Nodo *>(dir);
+        gc.clearHead();
         return node;
 
+
     }
+
 }
 
 

@@ -19,7 +19,7 @@ public:
 
     bool checkFree();
 
-    void vernodosGC();
+    //void vernodosGC();
 
     void clearHead();
 

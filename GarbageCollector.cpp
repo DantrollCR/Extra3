@@ -12,31 +12,29 @@ void GarbageCollector::setNewAddress(int *add) {
 
 
 bool GarbageCollector::checkFree() {
-    return true;
-/*
+
     if (lista->getHeadGC() == NULL){
 
         return true;
     }else{
         return false;
-    }*/
+    }
 
 
 }
 
-void GarbageCollector::vernodosGC() {
+/*void GarbageCollector::vernodosGC() {
     lista->vernodosGC();
-}
+}*/
 
-void GarbageCollector::clearHead() {
-    lista->deleteCollectorFirst();
-}
 bool GarbageCollector::checkFree1() {
     return false;
 }
 
 int *GarbageCollector::getFreeAddress() {
     lista->getHeadGC()->getAdress();
-
 }
 
+void GarbageCollector::clearHead() {
+    lista->deleteCollectorFirst();
+}

@@ -18,7 +18,6 @@ void Lista::addEnd(int valor) {
     if (head == NULL) {
         head = temp;
         tail = temp;
-        temp = NULL;
     } else {
         tail->next = temp;
         tail = temp;
@@ -26,14 +25,18 @@ void Lista::addEnd(int valor) {
 
     }
 
+
 }
 
-void Lista::addFirst(int valor){
-
+void Lista::vernodos() {
     Nodo *temp = new Nodo;
-    temp->dato = valor;
-    temp->next = head;
-    head = temp;
+    temp = head;
+    while (temp != NULL) {
+        std::cout << &temp->dato << std::endl;
+
+        std::cout << temp->dato << std::endl;
+        temp = temp->next;
+    }
 }
 
 void Lista::delete_first() {
@@ -43,29 +46,6 @@ void Lista::delete_first() {
     delete temp;
 }
 
-void Lista::delete_last() {
-    Nodo *current = new Nodo;
-    Nodo *previous = new Nodo;
-    current = head;
-    while (current->next != NULL) {
-        previous = current;
-        current = current->next;
-    }
-    tail = previous;
-    previous->next = NULL;
-    delete current;
-}
-
-void Lista::vernodos() {
-    Nodo *temp = new Nodo;
-    head = temp;
-    while (temp != NULL) {
-        std::cout << temp->dato << std::endl;
-        std::cout << &temp->dato << std::endl;
-        temp = temp->next;
-    }
-}
-
 void Lista::addCollectorEnd(int *address) {
     NodoGC *temp = new NodoGC;
     temp->adress = address;
@@ -73,66 +53,21 @@ void Lista::addCollectorEnd(int *address) {
     if (headGC == NULL) {
         headGC = temp;
         tailGC = temp;
-        temp = NULL;
     } else {
         tailGC->next = temp;
         tailGC = temp;
         tailGC->next = NULL;
-        temp = NULL;
     }
 
 }
 
-void Lista::vernodosGC() {
-    NodoGC *temp = new NodoGC;
-    headGC = temp;
-    while (temp != NULL) {
-        std::cout << temp->adress << std::endl;
-        temp = temp->next;
-    }
-}
-void Lista::deleteCollectorFirst(){
-
-    {
-        NodoGC *temp = new NodoGC;
-        headGC = temp;
-        headGC = headGC->next;
-        delete (temp);
-    }
-}
-
-void Lista::deleteCollectorEnd() {
-
-}
-
-Nodo *Lista::gethead() const {
-    return head;
-}
-
-void Lista::sethead(Nodo *head) {
-    Lista::head = head;
-}
-
-Nodo *Lista::gettail() const {
-    return tail;
-}
-
-void Lista::settail(Nodo *tail) {
-    Lista::tail = tail;
-}
-
-NodoGC *Lista::getHeadGC() const {
+NodoGC *Lista::getHeadGC() {
     return headGC;
 }
 
-void Lista::setHeadGC(NodoGC *headGC) {
-    Lista::headGC = headGC;
-}
-
-NodoGC *Lista::getTailGC() const {
-    return tailGC;
-}
-
-void Lista::setTailGC(NodoGC *tailGC) {
-    Lista::tailGC = tailGC;
+void Lista::deleteCollectorFirst() {
+    NodoGC *temp = new NodoGC;
+    temp = headGC;
+    headGC = headGC->next;
+    delete temp;
 }
