@@ -11,16 +11,18 @@
 
 class Lista {
 private:
-    Nodo *cabeza, *cola;
+    Nodo *head, *tail;
     NodoGC *headGC, *tailGC;
 
 public:
 
-    Nodo *getCabeza() const;
-    void setCabeza(Nodo *cabeza);
+    Nodo *gethead() const;
 
-    Nodo *getCola() const;
-    void setCola(Nodo *cola);
+    void sethead(Nodo *head);
+
+    Nodo *gettail() const;
+
+    void settail(Nodo *tail);
 
     NodoGC *getHeadGC() const;
     void setHeadGC(NodoGC *headGC);
@@ -33,6 +35,8 @@ public:
 
     void delete_last();
 
+    void delete_first();
+
     void addEnd(int valor);
 
     void addCollectorEnd(int *address);
@@ -41,9 +45,15 @@ public:
 
     void vernodos();
 
+    void vernodosGC();
+
+
     void addFirst(int valor);
 
     void deleteCollectorFirst();
+
+    void deleteCollectorEnd();
+
 };
 
 #endif //EXTRA3_LISTA_H

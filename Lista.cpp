@@ -5,8 +5,8 @@
 #include "Lista.h"
 
 Lista::Lista() {
-    cabeza = NULL;
-    cola = NULL;
+    head = NULL;
+    tail = NULL;
     headGC = NULL;
     tailGC = NULL;
 }
@@ -15,18 +15,16 @@ void Lista::addEnd(int valor) {
     Nodo *temp = new Nodo;
     temp->dato = valor;
     temp->next = NULL;
-    if (cabeza == NULL) {
-        cabeza = temp;
-        cola = temp;
+    if (head == NULL) {
+        head = temp;
+        tail = temp;
         temp = NULL;
     } else {
-        cola->next = temp;
-        cola = temp;
-        cola->next = NULL;
-        temp = NULL;
+        tail->next = temp;
+        tail = temp;
+        tail->next = NULL;
 
     }
-
 
 }
 
@@ -34,24 +32,36 @@ void Lista::addFirst(int valor){
 
     Nodo *temp = new Nodo;
     temp->dato = valor;
-    temp->next = NULL;
+    temp->next = head;
+    head = temp;
+}
 
-    if (cabeza == NULL){
-        cabeza = temp;
+void Lista::delete_first() {
+    Nodo *temp = new Nodo;
+    temp = head;
+    head = head->next;
+    delete temp;
+}
 
-    }else{
-
-         temp->next = cabeza;
-         cabeza = temp;
-
+void Lista::delete_last() {
+    Nodo *current = new Nodo;
+    Nodo *previous = new Nodo;
+    current = head;
+    while (current->next != NULL) {
+        previous = current;
+        current = current->next;
     }
+    tail = previous;
+    previous->next = NULL;
+    delete current;
 }
 
 void Lista::vernodos() {
     Nodo *temp = new Nodo;
-    temp = cabeza;
+    head = temp;
     while (temp != NULL) {
         std::cout << temp->dato << std::endl;
+        std::cout << &temp->dato << std::endl;
         temp = temp->next;
     }
 }
@@ -73,43 +83,42 @@ void Lista::addCollectorEnd(int *address) {
 
 }
 
+void Lista::vernodosGC() {
+    NodoGC *temp = new NodoGC;
+    headGC = temp;
+    while (temp != NULL) {
+        std::cout << temp->adress << std::endl;
+        temp = temp->next;
+    }
+}
 void Lista::deleteCollectorFirst(){
 
-
-    if (headGC == NULL){ //es una comprobacion
-
-        std::cout << "No hay espacios de memoria reutilizables disponibles" << std::endl;
-
-    }else{ //esto es lo que deberia hacer el código como tal
-
+    {
         NodoGC *temp = new NodoGC;
-
-        temp = headGC;
+        headGC = temp;
         headGC = headGC->next;
-
-        //aqui es donde no se si se borra el nodeGC de la lista totalmente
-        temp->next = NULL;
-        temp->adress = NULL;
-
-
-
+        delete (temp);
     }
 }
 
-Nodo *Lista::getCabeza() const {
-    return cabeza;
+void Lista::deleteCollectorEnd() {
+
 }
 
-void Lista::setCabeza(Nodo *cabeza) {
-    Lista::cabeza = cabeza;
+Nodo *Lista::gethead() const {
+    return head;
 }
 
-Nodo *Lista::getCola() const {
-    return cola;
+void Lista::sethead(Nodo *head) {
+    Lista::head = head;
 }
 
-void Lista::setCola(Nodo *cola) {
-    Lista::cola = cola;
+Nodo *Lista::gettail() const {
+    return tail;
+}
+
+void Lista::settail(Nodo *tail) {
+    Lista::tail = tail;
 }
 
 NodoGC *Lista::getHeadGC() const {

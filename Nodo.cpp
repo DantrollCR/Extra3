@@ -15,17 +15,26 @@ void *Nodo::operator new(size_t) {
     if (gc.checkFree() == true) {
         void *nodo = ::new Nodo();
         return nodo;
-    }
+    } else {
+        int *addFree = gc.getFreeAddress();
 
+        printf("Memoria Reciclable: %p ", addFree);
+
+        std::cout << "  " << std::endl;
+        Nodo *node = reinterpret_cast<Nodo *>(addFree);
+        return node;
+
+    }
 }
 
-void Nodo::operator delete(void *ptrNodo, Lista ls) {
 
-    if (ptrNodo == nullptr){
+void Nodo::operator delete(void *ptrNodo) {
 
-        std::cout<< "Esta wea esta vacía" << std::endl;
+    gc.setNewAddress(static_cast<int *>(ptrNodo));
+    free(ptrNodo);
 
-    }else{
+
+    /*}else{
 
         Nodo *temp = ls.getCabeza();
         while(temp->getNext() != ptrNodo){
@@ -36,7 +45,7 @@ void Nodo::operator delete(void *ptrNodo, Lista ls) {
         gc.setNewAddress(ptrNodo); //aqui como el puntero es tipo int me tira error y el delete es tipo void xD
         //aqui es donde se supone esta direccion en memoria se almacena en el colector y ahi su valor se hace NULL
 
-
+*/
     }
 
     //se almacena el puntero en la lista del GC
@@ -50,9 +59,8 @@ void Nodo::operator delete(void *ptrNodo, Lista ls) {
         gc.getFreeAddress();
 
     }*/
-    free(ptrNodo);
 
-}
+
 
 Nodo *Nodo::getNext() const {
     return next;

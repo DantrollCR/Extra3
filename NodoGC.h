@@ -7,12 +7,11 @@
 
 
 class NodoGC {
-private:
-    int dato;
 public:
-    bool isfree = false;
     int *adress;
     NodoGC *next;
+
+    int *getAdress();
 
 
 };

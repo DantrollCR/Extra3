@@ -19,7 +19,11 @@ public:
 
     bool checkFree();
 
-    void setNewAddress(Nodo *add);
+    void vernodosGC();
+
+    void clearHead();
+
+    void setNewAddress(int *add);
 
     int *getFreeAddress();
 };
