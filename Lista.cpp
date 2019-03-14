@@ -67,8 +67,8 @@ void Lista::vernodos() {
     }
 }
 
-/*
- * @brief Funcion que elimina el primer elemento de la lista.
+/**
+ * @brief Funcion que elimina el primer nodo de una lista.
  */
 
 void Lista::delete_first() {
@@ -84,6 +84,9 @@ void Lista::delete_first() {
 
 }
 
+/**
+ * @brief Funcion que elimina el ultimo nodo de una lista.
+ */
 void Lista::delete_last() {
     Nodo *ptr, *prev;
     if (head == NULL)
@@ -105,6 +108,11 @@ void Lista::delete_last() {
 
 }
 
+/**
+ * @brief Esta funcion se encarga de agregar un Nodo(para collector) en la lista del Collector, para asi poder
+ * tener a mano la memoria que se puede utilizar, recibe como parámetros una direccion de memoria.
+ * @param address
+ */
 void Lista::addCollectorEnd(int *address) {
     NodoGC *nodeCol = new NodoGC();
     nodeCol->adress = address;
@@ -113,10 +121,17 @@ void Lista::addCollectorEnd(int *address) {
 
 }
 
+/**
+ * @return Cabeza del Collector.
+ */
+
 NodoGC *Lista::getHeadGC() {
     return headGC;
 }
 
+/**
+ * @brief Funcion que elimina el primer elemento de la lista Collector, para así liberar memoria que no está siendo utulizada.
+ */
 void Lista::deleteCollectorFirst() {
     if (headGC == NULL) {
         std::cout << "esta vacia" << std::endl;
@@ -128,24 +143,5 @@ void Lista::deleteCollectorFirst() {
     }
 }
 
-void Lista::vernodosGC() {
-    NodoGC *temp = new NodoGC;
-    temp = headGC;
-    while (temp != NULL) {
-        std::cout << &temp->adress << std::endl;
-
-        std::cout << temp->adress << std::endl;
-        temp = temp->next;
-    }
-}
-
-void Lista::printCollector() {
-    NodoGC *headCollector = this->headGC;
-    int i = 1;
-    while (headCollector) {
-        std::cout << i << ": " << headCollector->adress << " Collector" << std::endl;
-        headCollector = headCollector->next;
-        i++;
-    }
 }
 

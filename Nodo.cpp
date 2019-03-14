@@ -2,8 +2,8 @@
 // Created by dantroll on 12/03/19.
 //
 
-/*
- * @author Daniel Acuña Mora
+/**
+ * @authors Daniel Acuña Mora, Josue Mata.
  */
 
 #include "Nodo.h"
