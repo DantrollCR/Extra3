@@ -1,8 +1,11 @@
-//
-// Created by dantroll on 12/03/19.
-//
-
+/**
+ * @authors Daniel Acuña Mora, Josue Mata
+ */
 #include "Lista.h"
+
+/**
+ * @brief Constructor de la clase Lista.
+ */
 
 Lista::Lista() {
     head = NULL;
@@ -12,25 +15,43 @@ Lista::Lista() {
 }
 
 
-void Lista::addFirst(int data) {
+/**
+ * @brief Funcion que agrega un nodo al inicio de la lista, recibe un numero entero que será el valor que se almacene
+ * en el Nodo.
+ * @param valor
+ */
+void Lista::addFirst(int valor) {
     Nodo *node = new Nodo();
-    node->dato = data;
+    node->dato = valor;
     node->next = this->head;
     this->head = node;
     //std::cout << "Se ha agregado el valor" << node->dato << " en la dirección de memoria: " << &node->dato << std::endl;
 }
 
+/**
+ * @brief Funcion que agrega un nodo al final de la lista, recibe un numero entero que será el valor que se almacene
+ * en el Nodo.
+ * @param valor
+ */
 void Lista::addLast(int valor){
+    Nodo *temp = new Nodo;
+    temp->dato = valor;
+    temp->next = NULL;
 
-    Nodo *node = new Nodo();
-    node->dato = valor;
-    this->tail->next = node;
-    this->tail = node;
-    this->tail->next = NULL;
-
+    if (!head) { //
+        head = temp;
+        return;
+    } else { // find last and link the new node
+        Nodo *last = head;
+        while (last->next) last = last->next;
+        last->next = temp;
+    }
 
 }
 
+/**
+ * @brief Simple implementacion de una funcion que muestra los valores de cada nodo en la lista.
+ */
 void Lista::vernodos() {
     Nodo *temp;
     temp = head;
@@ -42,6 +63,10 @@ void Lista::vernodos() {
         i++;
     }
 }
+
+/**
+ * @brief Funcion que elimina el primer nodo de una lista.
+ */
 
 void Lista::delete_first() {
 
@@ -56,6 +81,9 @@ void Lista::delete_first() {
 
 }
 
+/**
+ * @brief Funcion que elimina el ultimo nodo de una lista.
+ */
 void Lista::delete_last() {
     Nodo *ptr, *prev;
     if (head == NULL)
@@ -77,6 +105,11 @@ void Lista::delete_last() {
 
 }
 
+/**
+ * @brief Esta funcion se encarga de agregar un Nodo(para collector) en la lista del Collector, para asi poder
+ * tener a mano la memoria que se puede utilizar, recibe como parámetros una direccion de memoria.
+ * @param address
+ */
 void Lista::addCollectorEnd(int *address) {
     NodoGC *nodeCol = new NodoGC();
     nodeCol->adress = address;
@@ -85,10 +118,17 @@ void Lista::addCollectorEnd(int *address) {
 
 }
 
+/**
+ * @return Cabeza del Collector.
+ */
+
 NodoGC *Lista::getHeadGC() {
     return headGC;
 }
 
+/**
+ * @brief Funcion que elimina el primer elemento de la lista Collector, para así liberar memoria que no está siendo utulizada.
+ */
 void Lista::deleteCollectorFirst() {
     if (headGC == NULL) {
         std::cout << "esta vacia" << std::endl;
@@ -99,25 +139,3 @@ void Lista::deleteCollectorFirst() {
 
     }
 }
-
-void Lista::vernodosGC() {
-    NodoGC *temp = new NodoGC;
-    temp = headGC;
-    while (temp != NULL) {
-        std::cout << &temp->adress << std::endl;
-
-        std::cout << temp->adress << std::endl;
-        temp = temp->next;
-    }
-}
-
-void Lista::printCollector() {
-    NodoGC *headCollector = this->headGC;
-    int i = 1;
-    while (headCollector) {
-        std::cout << i << ": " << headCollector->adress << " Collector" << std::endl;
-        headCollector = headCollector->next;
-        i++;
-    }
-}
-

@@ -32,7 +32,7 @@ bool GarbageCollector::checkFree() {
 }
 
 
-}
+
 
 int *GarbageCollector::getFreeAddress() {
     lista->getHeadGC()->getAdress();
