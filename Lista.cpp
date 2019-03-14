@@ -36,6 +36,9 @@ void Lista::addLast(int valor){
 
 }
 
+/*
+ * @brief Funcion simple para recorrer los nodos y ver su valor, adempás se imprime la memoria que usaron.
+ */
 void Lista::vernodos() {
     Nodo *temp;
     temp = head;
@@ -47,6 +50,10 @@ void Lista::vernodos() {
         i++;
     }
 }
+
+/*
+ * @brief Funcion que elimina el primer elemento de la lista.
+ */
 
 void Lista::delete_first() {
 
