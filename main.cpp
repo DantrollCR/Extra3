@@ -5,15 +5,18 @@
 
 int main() {
     Lista *ls = new Lista;
-    ls->delete_last();
-    ls->addEnd(5);
-    ls->addEnd(888);
-    ls->addEnd(85);
-    ls->addEnd(85);
+    ls->delete_first();
+    ls->addFirst(5);
+    ls->addFirst(888);
+    ls->addFirst(85);
+    ls->addFirst(85);
 
     ls->vernodos();
     ls->delete_last();
-    ls->addEnd(75);
+    ls->delete_last();
+    ls->delete_last();
+
+    ls->addFirst(75);
     ls->vernodos();
 
 

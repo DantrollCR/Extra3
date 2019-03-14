@@ -12,7 +12,7 @@ Lista::Lista() {
 }
 
 
-void Lista::addEnd(int data) {
+void Lista::addFirst(int data) {
     Nodo *node = new Nodo();
     node->dato = data;
     node->next = this->head;
@@ -22,14 +22,27 @@ void Lista::addEnd(int data) {
 void Lista::vernodos() {
     Nodo *temp;
     temp = head;
+    int i = 1;
     while (temp != NULL) {
-        std::cout << &temp->dato << std::endl;
-
-        std::cout << temp->dato << std::endl;
+        std::cout << i << ") Dirección de memoria: " << &temp->dato << "| " << "Dato:" << temp->dato << " "
+                  << std::endl;
         temp = temp->next;
+        i++;
     }
 }
 
+void Lista::delete_first() {
+
+    Nodo *temp;
+    if (head == NULL) {
+        std::cout << "No hay elementos para eliminar." << std::endl;
+    } else {
+        temp = head;
+        head = temp->next;
+        delete (temp);
+    }
+
+}
 
 void Lista::delete_last() {
     Nodo *ptr, *prev;

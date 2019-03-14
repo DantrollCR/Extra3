@@ -29,21 +29,16 @@ public:
 
     void delete_first();
 
-    void addEnd(int valor);
+    void addFirst(int valor);
 
     void addCollectorEnd(int *address);
-
-    void createnode(int value);
 
     void vernodos();
 
     void vernodosGC();
 
-    void reciclar();
 
     void printCollector();
-
-    void add(int valor);
 
     void deleteCollectorFirst();
 //
