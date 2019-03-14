@@ -17,6 +17,18 @@ void Lista::addFirst(int data) {
     node->dato = data;
     node->next = this->head;
     this->head = node;
+    //std::cout << "Se ha agregado el valor" << node->dato << " en la dirección de memoria: " << &node->dato << std::endl;
+}
+
+void Lista::addLast(int valor){
+
+    Nodo *node = new Nodo();
+    node->dato = valor;
+    this->tail->next = node;
+    this->tail = node;
+    this->tail->next = NULL;
+
+
 }
 
 void Lista::vernodos() {
@@ -108,3 +120,4 @@ void Lista::printCollector() {
         i++;
     }
 }
+

@@ -31,6 +31,8 @@ public:
 
     void addFirst(int valor);
 
+    void addLast(int valor);
+
     void addCollectorEnd(int *address);
 
     void vernodos();
