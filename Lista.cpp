@@ -21,13 +21,18 @@ void Lista::addFirst(int data) {
 }
 
 void Lista::addLast(int valor){
+    Nodo *temp = new Nodo;
+    temp->dato = valor;
+    temp->next = NULL;
 
-    Nodo *node = new Nodo();
-    node->dato = valor;
-    this->tail->next = node;
-    this->tail = node;
-    this->tail->next = NULL;
-
+    if (!head) { //
+        head = temp;
+        return;
+    } else { // find last and link the new node
+        Nodo *last = head;
+        while (last->next) last = last->next;
+        last->next = temp;
+    }
 
 }
 
