@@ -6,11 +6,19 @@
 
 static Lista *lista = new Lista;
 
+/**
+ * Funcion encargada de establecer una nueva dirección de memoria
+ * para agregarla a lista de memorias para reciclar
+ * @param add direccion de memoria a almacenar
+ */
 void GarbageCollector::setNewAddress(int *add) {
     lista->addCollectorEnd(add);
 }
 
-
+/**
+ * Funcion que revisa si la lista de memorias para reciclar tiene elementos
+ * @return
+ */
 bool GarbageCollector::checkFree() {
 
     if (lista->getHeadGC() == NULL){
@@ -23,18 +31,18 @@ bool GarbageCollector::checkFree() {
 
 }
 
-/*void GarbageCollector::vernodosGC() {
-    lista->vernodosGC();
-}*/
 
-bool GarbageCollector::checkFree1() {
-    return false;
 }
 
 int *GarbageCollector::getFreeAddress() {
     lista->getHeadGC()->getAdress();
 }
 
+/**
+ * Funcion que verifica si hay memorias disponibles dentro de la lista
+ * para reciclar y asignarselas al nodo que se este agregando en la lista
+ * @return
+ */
 void *GarbageCollector::verificar() { //verificar si hay algun espacio reciclado que se le pueda asignar
     if (lista->getHeadGC() != NULL) { //si hay espacio reciclado
 
@@ -53,6 +61,12 @@ void *GarbageCollector::verificar() { //verificar si hay algun espacio reciclado
 
 }
 
+
+/**
+ * funcion encargada de llamar a la funcion para agregar una dirección de memoria disponible
+ * para reciclar a la lista del GarbageCollector
+ * @param direccion : dirección de memoria
+ */
 void GarbageCollector::reciclar(int *direccion) {
     lista->addCollectorEnd(direccion);
 

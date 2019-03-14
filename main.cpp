@@ -1,6 +1,12 @@
 
 #include "Lista.h"
 
+/**
+ * Método principal main el cual ejecuta el llamado de las funciones,
+ * agregando nodos a la lista, eliminadolos y mostrandolos en consola
+ * @return
+ */
+
 //https://github.com/DantrollCR/Extra3
 int main() {
     Lista *ls = new Lista;
