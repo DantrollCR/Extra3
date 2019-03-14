@@ -37,10 +37,13 @@ public:
 
     void vernodos();
 
-    //void vernodosGC();
+    void vernodosGC();
 
+    void reciclar();
 
-    void addFirst(int valor);
+    void printCollector();
+
+    void add(int valor);
 
     void deleteCollectorFirst();
 //

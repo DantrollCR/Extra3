@@ -20,8 +20,11 @@ public:
     bool checkFree();
 
     //void vernodosGC();
+    void *verificar();
 
     void clearHead();
+
+    void reciclar(int *i);
 
     void setNewAddress(int *add);
 
