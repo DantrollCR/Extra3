@@ -23,9 +23,8 @@ void Lista::addFirst(int data) {
 void Lista::addLast(int valor){
 
     Nodo *node = new Nodo();
-    Nodo *temp = this->tail;
     node->dato = valor;
-    temp->next = node;
+    this->tail->next = node;
     this->tail = node;
     this->tail->next = NULL;
 
