@@ -1,8 +1,14 @@
 //
 // Created by dantroll on 12/03/19.
 //
-
+/**
+ * @authors Daniel Acuña Mora, Josue Mata
+ */
 #include "Lista.h"
+
+/**
+ * @brief Constructor de la clase Lista.
+ */
 
 Lista::Lista() {
     head = NULL;
@@ -12,14 +18,24 @@ Lista::Lista() {
 }
 
 
-void Lista::addFirst(int data) {
+/**
+ * @brief Funcion que agrega un nodo al inicio de la lista, recibe un numero entero que será el valor que se almacene
+ * en el Nodo.
+ * @param valor
+ */
+void Lista::addFirst(int valor) {
     Nodo *node = new Nodo();
-    node->dato = data;
+    node->dato = valor;
     node->next = this->head;
     this->head = node;
     //std::cout << "Se ha agregado el valor" << node->dato << " en la dirección de memoria: " << &node->dato << std::endl;
 }
 
+/**
+ * @brief Funcion que agrega un nodo al final de la lista, recibe un numero entero que será el valor que se almacene
+ * en el Nodo.
+ * @param valor
+ */
 void Lista::addLast(int valor){
     Nodo *temp = new Nodo;
     temp->dato = valor;
@@ -36,8 +52,8 @@ void Lista::addLast(int valor){
 
 }
 
-/*
- * @brief Funcion simple para recorrer los nodos y ver su valor, adempás se imprime la memoria que usaron.
+/**
+ * @brief Simple implementacion de una funcion que muestra los valores de cada nodo en la lista.
  */
 void Lista::vernodos() {
     Nodo *temp;
